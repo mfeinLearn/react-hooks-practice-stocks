@@ -1,12 +1,18 @@
 import React from "react";
 
-function Stock() {
+function Stock({ name, price, inTheStockContainer }) {
+  const handleClick = (event) => {
+    console.log("Button clicked");
+    const createdObj = { keyOfObj: "valueOfObj" };
+    inTheStockContainer(createdObj);
+  };
+
   return (
-    <div>
+    <div onClick={(e) => handleClick(e)}>
       <div className="card">
         <div className="card-body">
-          <h5 className="card-title">{"Compant Name"}</h5>
-          <p className="card-text">{"Stock Price"}</p>
+          <h5 className="card-title">{name}</h5>
+          <p className="card-text">{price}</p>
         </div>
       </div>
     </div>
