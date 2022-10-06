@@ -5,10 +5,10 @@ import SearchBar from "./SearchBar";
 
 function MainContainer() {
   // added off line
-  const [buy, setBuy] = useState([]);
+  const [buy, setBuy] = useState({});
 
-  function inTheStockContainerThenMain(obj) {
-    console.log("logging the obj: ", obj);
+  function theTransporter(obj) {
+    // console.log("logging the obj: ", obj);
     setBuy(obj);
   }
 
@@ -17,9 +17,7 @@ function MainContainer() {
       <SearchBar />
       <div className="row">
         <div className="col-8">
-          <StockContainer
-            inTheStockContainerThenMain={inTheStockContainerThenMain}
-          />
+          <StockContainer theTransporter={theTransporter} />
         </div>
         <div className="col-4">
           <PortfolioContainer buy={buy} />
