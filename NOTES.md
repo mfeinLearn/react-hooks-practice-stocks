@@ -21,8 +21,13 @@ Action Plan:
 
 ---
 
-[] 3. when a stock is clicked (in StockContainer) add stock to PortfolioContainer
+[x] 3. when a stock is clicked (in StockContainer) add stock to PortfolioContainer
+[x] 3a. figure out a way to distinguance between a click on the stock from the StockContainer and from the PortfolioContainer
+
 [] 4. In PortfolioContainer when one stock is clicked delete from your list of stocks
+
+- [] 4a. filter out the stock that we clicked in our PortfolioContainer state and log the result (fun error).
+
 [] 5. when the checkbox clicked sort stocks either alphabetically or by price (ascending order ) in StockContainer
 [] 6. filter stocks based on type of stock in StockContainer
 

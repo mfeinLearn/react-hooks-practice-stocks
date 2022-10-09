@@ -1,21 +1,20 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import Stock from "./Stock";
 
-// let myPortfolioArray = [];
+let myPortfolioArray = [];
 function PortfolioContainer({ buy }) {
-  const [myStocks, setMyStocks] = useState([]);
-  // const [isInitialRender, setIsInitialRender] = useState(true);
-
-  // const fixedMyStocks = myStocks.slice(2);
+  const [myStocks, setMyStocks] = useState([...myPortfolioArray]);
+  const fixedMyStocks = myStocks.slice(2);
   // console.log("from the PortfolioContainer: ", buy);
 
-  const buyStock = useCallback(() => {
-    setMyStocks(() => [...myStocks, buy]);
-  }, []);
-
   useEffect(() => {
-    buyStock();
-  }, [buyStock]);
+    const f = () => {
+      myPortfolioArray.push(buy);
+      setMyStocks([...myPortfolioArray]);
+    };
+
+    f(buy);
+  }, [buy]);
 
   // const myStockList = myStocks.map((stock) => {
   //   return (
@@ -31,10 +30,12 @@ function PortfolioContainer({ buy }) {
   function deleteStock(stockToDelete) {
     console.log("deleted stock!", stockToDelete.id);
     console.log("stocks from state: ", myStocks);
-    const newStocksArray = myStocks.filter((stock) => {
+    const newStocksArray = fixedMyStocks.filter((stock) => {
       return stock.id !== stockToDelete.id;
     });
-    setMyStocks([...newStocksArray]);
+    // myPortfolioArray.push([...newStocksArray]);
+    setMyStocks(newStocksArray);
+    console.log("just to see: ", newStocksArray);
   }
 
   return (
@@ -45,7 +46,7 @@ function PortfolioContainer({ buy }) {
         //render your portfolio stocks here
       }
 
-      {myStocks?.map((stock) => {
+      {fixedMyStocks.map((stock) => {
         return (
           <Stock
             key={stock.id}

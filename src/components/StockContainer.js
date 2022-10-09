@@ -28,6 +28,7 @@ function StockContainer({ theTransporter }) {
   const stockList = stocks.map((stock) => {
     return (
       <Stock
+        key={stock.id}
         name={stock.name}
         price={stock.price}
         theStock={stock}
