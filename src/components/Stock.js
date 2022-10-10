@@ -1,31 +1,12 @@
 import React from "react";
 
-function Stock({
-  name,
-  price,
-  inTheStockContainer,
-  theStock,
-  deleteStock,
-  isFromPorfolioComponent,
-}) {
-  // const handleClick = (event) => {
-  //   console.log("Button clicked");
-  //   const createdObj = { keyOfObj: "valueOfObj" };
-  //   inTheStockContainer(createdObj);
-  // };
+function Stock({ name, price, handleAddStock, stock }) {
+  const handleClick = () => {
+    handleAddStock(stock);
+  };
 
-  function navigator(e, clickedStock) {
-    console.log("A stock in my porfolio: ", isFromPorfolioComponent);
-    if (isFromPorfolioComponent) {
-      // console.log(clickedStock);
-      deleteStock(e, clickedStock);
-    } else {
-      inTheStockContainer(e, clickedStock);
-    }
-  }
-  // <div onClick={(e) => inTheStockContainer(e, theStock)}>
   return (
-    <div onClick={(e) => navigator(e, theStock)}>
+    <div onClick={handleClick}>
       <div className="card">
         <div className="card-body">
           <h5 className="card-title">{name}</h5>
