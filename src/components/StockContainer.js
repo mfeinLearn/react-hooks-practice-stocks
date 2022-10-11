@@ -1,23 +1,39 @@
+import { Component } from "react";
 import Stock from "./Stock";
 
-function StockContainer({ stocks, handleAddStock }) {
-  const stockList = stocks.map((stock) => {
+class StockContainer extends Component {
+  // stockList = this.props.stocks.map((stock) => {
+  //   return (
+  //     <Stock
+  //       name={stock.name}
+  //       price={stock.price}
+  //       handleAddStock={this.props.handleAddStock}
+  //       stock={stock}
+  //       key={stock.id}
+  //     />
+  //   );
+  // });
+
+  render() {
     return (
-      <Stock
-        name={stock.name}
-        price={stock.price}
-        handleAddStock={handleAddStock}
-        stock={stock}
-        key={stock.id}
-      />
+      <div>
+        <h2>Stocks</h2>
+
+        {this.props.stocks.map((stock) => {
+          return (
+            <Stock
+              name={stock.name}
+              price={stock.price}
+              handleAddStock={this.props.handleAddStock}
+              stock={stock}
+              key={stock.id}
+            />
+          );
+        })}
+        {/* {this.stockList ? this.stockList : "ops.."} */}
+      </div>
     );
-  });
-  return (
-    <div>
-      <h2>Stocks</h2>
-      {stockList}
-    </div>
-  );
+  }
 }
 
 export default StockContainer;
